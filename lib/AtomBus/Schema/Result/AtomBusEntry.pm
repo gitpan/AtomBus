@@ -39,7 +39,7 @@ AtomBus::Schema::Result::AtomBusEntry
 
 =head1 VERSION
 
-version 1.0403
+version 1.0404
 
 =head1 NAME
 

@@ -16,7 +16,7 @@ AtomBus::Schema
 
 =head1 VERSION
 
-version 1.0403
+version 1.0404
 
 =head1 AUTHOR
 

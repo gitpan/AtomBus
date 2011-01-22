@@ -26,4 +26,4 @@ requires:
 resources:
   bugtracker: http://github.com/ironcamel/AtomBus/issues
   repository: git://github.com/ironcamel/AtomBus.git
-version: 1.0403
+version: 1.0404

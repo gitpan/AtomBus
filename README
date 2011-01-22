@@ -2,7 +2,7 @@ NAME
     AtomBus - An AtomPub server for messaging.
 
 VERSION
-    version 1.0403
+    version 1.0404
 
 SYNOPSIS
         use Dancer;
@@ -10,10 +10,9 @@ SYNOPSIS
         dance;
 
 DESCRIPTION
-    AtomBus is an AtomPub server that can be used for messaging. It is also
-    a pubsubhubbub friendly publisher. The idea is that atom feeds can
-    correspond to conceptual queues or buses. AtomBus is built on top of the
-    Dancer framework.
+    AtomBus is an AtomPub server that can be used for messaging. The idea is
+    that atom feeds can correspond to conceptual queues or buses. AtomBus is
+    built on top of the Dancer framework. It is also pubsubhubbub friendly.
 
     These examples assume that you have configured your web server to point
     HTTP requests starting with /atombus to your AtomBus server (see
@@ -70,15 +69,16 @@ CONFIGURATION
 
     Example config.yml:
 
+        # Dancer specific config settings
         logger: file
         log: errors
-        page_size: 100
-        plugins:
-            DBIC:
-                atombus:
-                    dsn: 'dbi:mysql:database=atombus'
-                    user: joe
-                    pass: momma
+
+        atombus:
+            page_size: 100
+            db:
+                dsn:  dbi:mysql:database=atombus
+                user: joe
+                pass: momma
 
     You can alternatively configure the server via the 'set' keyword in the
     source code. This approach does not require a config file.
@@ -86,16 +86,15 @@ CONFIGURATION
         use Dancer;
         use AtomBus;
 
+        # Dancer specific config settings
         set logger      => 'file';
         set log         => 'debug';
         set show_errors => 1;
-        set page_size   => 100;
 
-        set plugins => {
-            DBIC => {
-                atombus => {
-                    dsn => 'dbi:SQLite:dbname=/var/local/atombus/atombus.db',
-                }
+        set atombus => {
+            page_size => 100,
+            db => {
+                dsn => 'dbi:SQLite:dbname=/var/local/atombus/atombus.db',
             }
         };
 

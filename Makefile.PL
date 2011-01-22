@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
     'XML::Atom' => '0',
     'XML::XPath' => '0'
   },
-  'VERSION' => '1.0403',
+  'VERSION' => '1.0404',
   'test' => {
     'TESTS' => 't/*.t'
   }

@@ -7,12 +7,13 @@ use UUID::Tiny;
 use XML::Atom;
 $XML::Atom::DefaultVersion = '1.0';
 
-our $VERSION = 1.0403;# VERSION
+our $VERSION = 1.0404;# VERSION
 
 set content_type => 'application/xml';
 
 my $deployed = 0;
 before sub {
+    config->{plugins}{DBIC}{atombus} = config->{atombus}{db};
     config->{plugins}{DBIC}{atombus}{schema_class} = 'AtomBus::Schema';
     # Automagically create db if it doesn't exist.
     if (not $deployed++) {
@@ -71,7 +72,7 @@ get '/feeds/:feed_title' => sub {
     }
     my $rset = schema->resultset('AtomBusEntry')->search(
         \%query, { order_by => ['order_id'] });
-    my $count = setting('page_size') || 1000;
+    my $count = config->{atombus}{page_size} || 1000;
     my $last_id;
     while ($count-- && (my $entry = $rset->next)) {
         $feed->add_entry(_entry_from_db($entry));
@@ -143,7 +144,7 @@ AtomBus - An AtomPub server for messaging.
 
 =head1 VERSION
 
-version 1.0403
+version 1.0404
 
 =head1 SYNOPSIS
 
@@ -154,9 +155,9 @@ version 1.0403
 =head1 DESCRIPTION
 
 AtomBus is an AtomPub server that can be used for messaging.
-It is also a pubsubhubbub friendly publisher.
 The idea is that atom feeds can correspond to conceptual queues or buses.
 AtomBus is built on top of the L<Dancer> framework.
+It is also pubsubhubbub friendly.
 
 These examples assume that you have configured your web server to point HTTP
 requests starting with /atombus to your AtomBus server (see L</DEPLOYMENT>).
@@ -216,15 +217,16 @@ The only required config setting is the dsn.
 
 Example config.yml:
 
+    # Dancer specific config settings
     logger: file
     log: errors
-    page_size: 100
-    plugins:
-        DBIC:
-            atombus:
-                dsn: 'dbi:mysql:database=atombus'
-                user: joe
-                pass: momma
+
+    atombus:
+        page_size: 100
+        db:
+            dsn:  dbi:mysql:database=atombus
+            user: joe
+            pass: momma
 
 You can alternatively configure the server via the 'set' keyword in the source
 code. This approach does not require a config file.
@@ -232,16 +234,15 @@ code. This approach does not require a config file.
     use Dancer;
     use AtomBus;
 
+    # Dancer specific config settings
     set logger      => 'file';
     set log         => 'debug';
     set show_errors => 1;
-    set page_size   => 100;
 
-    set plugins => {
-        DBIC => {
-            atombus => {
-                dsn => 'dbi:SQLite:dbname=/var/local/atombus/atombus.db',
-            }
+    set atombus => {
+        page_size => 100,
+        db => {
+            dsn => 'dbi:SQLite:dbname=/var/local/atombus/atombus.db',
         }
     };
 
