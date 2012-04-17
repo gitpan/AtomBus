@@ -2,7 +2,7 @@ NAME
     AtomBus - An AtomPub server for messaging.
 
 VERSION
-    version 1.0404
+    version 1.0405
 
 SYNOPSIS
         use Dancer;
@@ -166,7 +166,7 @@ MOTIVATION
     AtomBus a shot.
 
 AUTHOR
-    Naveed Massjouni <naveed.massjouni@rackspace.com>
+    Naveed Massjouni <naveedm9@gmail.com>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2010 by Naveed Massjouni.

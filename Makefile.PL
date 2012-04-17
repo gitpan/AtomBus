@@ -4,36 +4,36 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'An AtomPub server for messaging.',
-  'AUTHOR' => 'Naveed Massjouni <naveed.massjouni@rackspace.com>',
-  'BUILD_REQUIRES' => {},
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "ABSTRACT" => "An AtomPub server for messaging.",
+  "AUTHOR" => "Naveed Massjouni <naveedm9\@gmail.com>",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'AtomBus',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'AtomBus',
-  'PREREQ_PM' => {
-    'Atompub' => '0',
-    'Capture::Tiny' => '0',
-    'DBD::SQLite' => '0',
-    'DBIx::Class' => '0.08115',
-    'Dancer' => '1.2002',
-    'Dancer::Plugin::DBIC' => '0.1504',
-    'SQL::Translator' => '0.11006',
-    'UUID::Tiny' => '0.02',
-    'XML::Atom' => '0',
-    'XML::XPath' => '0'
+  "DISTNAME" => "AtomBus",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "AtomBus",
+  "PREREQ_PM" => {
+    "Atompub" => 0,
+    "Capture::Tiny" => 0,
+    "DBD::SQLite" => 0,
+    "DBIx::Class" => "0.08115",
+    "Dancer" => "1.2002",
+    "Dancer::Plugin::DBIC" => "0.1504",
+    "SQL::Translator" => "0.11006",
+    "UUID::Tiny" => "0.02",
+    "XML::Atom" => 0,
+    "XML::XPath" => 0
   },
-  'VERSION' => '1.0404',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "1.0405",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

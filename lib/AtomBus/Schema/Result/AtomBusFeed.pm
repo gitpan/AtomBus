@@ -34,7 +34,7 @@ AtomBus::Schema::Result::AtomBusFeed
 
 =head1 VERSION
 
-version 1.0404
+version 1.0405
 
 =head1 NAME
 
@@ -82,7 +82,7 @@ Related object: L<AtomBus::Schema::Result::AtomBusEntry>
 
 =head1 AUTHOR
 
-Naveed Massjouni <naveed.massjouni@rackspace.com>
+Naveed Massjouni <naveedm9@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
